@@ -1,17 +1,18 @@
-import Login from "./components/Login";
-import HomePage from "./components/HomePage";
-import { BrowserRouter , Routes , Route } from "react-router-dom";
+import { Provider} from "react-redux";
+import appStore from "./utils/appStore";
+import Body from "./components/Body";
 
 
 function App() {
+
+
+
+
   return (
     <div>
-      <BrowserRouter>
-       <Routes>
-           <Route path="/" element={<Login/>}/>
-           <Route path="/home" element={<HomePage/>}/>
-       </Routes>
-      </BrowserRouter>
+      <Provider store={appStore}>
+        <Body/>
+      </Provider>
    
     </div>
   );
