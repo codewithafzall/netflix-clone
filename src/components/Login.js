@@ -1,20 +1,22 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { formValidation } from "../utils/validate";
-import { createUserWithEmailAndPassword , signInWithEmailAndPassword} from "firebase/auth";
+import { createUserWithEmailAndPassword , signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
  
-
+  const dispatch = useDispatch();
 
   const [isSignIn, setIsSignIn]= useState(true);
   const [errorMessage , setErrorMessage]= useState(null);
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null);
   const navigate = useNavigate();
    
   const handleSignIn = ()=>{
@@ -33,7 +35,16 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName:  name.current.value , photoURL: ""
+          }).then(() => {
+            const {uid , email, displayName } = auth.currentUser;
+            dispatch(addUser({uid : uid ,email : email, displayName : displayName}));
             setIsSignIn(true);
+          }).catch((error) => {
+           alert("please fill the details carefully")
+          });
+         
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -70,16 +81,13 @@ const Login = () => {
           alt="bg-image"
         />
       </div>
-      <form onSubmit={(e)=>e.preventDefault()} className={` w-4/12 absolute p-12 bg-black my-44 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80`}>
+      <form onSubmit={(e)=>e.preventDefault()} className={` w-4/12 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80`}>
         
         <h1 className="font-bold text-3xl mb-3">{isSignIn ? "Sign  in" : "Sign Up"}</h1>
 
         {!isSignIn && 
           <div>
-        <div className="flex">
-        <input type="text" className="w-full p-3 my-3 mr-2 rounded-lg bg-gray-700" placeholder="First Name"/>
-        <input type="text" className="w-full p-3 my-3 ml-2 rounded-lg bg-gray-700" placeholder="Last Name"/>
-        </div>
+        <input ref={name} type="text" className="w-full p-3 my-3 mr-2 rounded-lg bg-gray-700" placeholder="Full Name"/>
 
         <div>
           <input type="text"className="w-full p-3 my-3 rounded-lg bg-gray-700" placeholder="Phone Number"/>
