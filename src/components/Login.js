@@ -56,17 +56,16 @@ const Login = () => {
     }
     else{
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
-  .then((userCredential) => {
-    // Signed in 
-    const user = userCredential.user;
-     navigate("/home");
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorText = "Not a Valid User";
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorText = "Not a Valid User";
 
-    setErrorMessage(errorCode +"-"+ errorText);
-  });
+        setErrorMessage(errorCode +"-"+ errorText);
+      });
     }
 
   }

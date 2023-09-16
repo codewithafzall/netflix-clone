@@ -1,12 +1,32 @@
-import React from 'react';
-import { signOut, getAuth } from "firebase/auth";
+import React, { useEffect } from 'react';
+import { signOut, getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addUser, removeUser } from '../utils/userSlice';
+import { auth } from '../utils/firebase';
 
 const Header = () => {
 
  const navigate = useNavigate();
  const user = useSelector((store)=> store.user);
+ const dispatch = useDispatch();
+
+    useEffect(()=>{
+   
+     const unsubscribe = onAuthStateChanged(auth, (user) => {
+       if (user) {
+         
+         const {uid , email, displayName } = user;
+         dispatch(addUser({uid : uid ,email : email, displayName : displayName}));
+         navigate("/home");
+         
+       } else {
+        dispatch(removeUser());
+        navigate("/")
+       }
+     });
+      return ()=> unsubscribe();
+    },[]);
 
   const handleSignOut = ()=>{
     const auth = getAuth();
@@ -25,7 +45,6 @@ const Header = () => {
       </div>
       {user && (
         <div className='flex m-7 p-2'>
-          <p className='text-black font-semibold uppercase mt-2'>{user.displayName}</p>
         <button onClick={handleSignOut} className='bg-red-600 rounded-lg ms-2 px-4 text-sm'>Sign Out</button>
       </div>
       )}
