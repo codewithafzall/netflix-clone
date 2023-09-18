@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { auth } from '../utils/firebase';
+import { toggleGpt } from '../utils/GptSlice';
 
 const Header = () => {
 
@@ -35,6 +36,10 @@ const Header = () => {
     }).catch((error) => {
       navigate('/error')
     });
+  };
+
+  const handleGptSearch = ()=>{
+    dispatch(toggleGpt());
   }
 
   return (
@@ -45,6 +50,7 @@ const Header = () => {
       </div>
       {user && (
         <div className='flex m-7 p-2'>
+          <button onClick={handleGptSearch} className='bg-purple-600 rounded-lg ms-2 px-10 text-sm'>Gpt Search</button>
         <button onClick={handleSignOut} className='bg-red-600 rounded-lg ms-2 px-4 text-sm'>Sign Out</button>
       </div>
       )}
