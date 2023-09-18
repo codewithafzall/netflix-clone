@@ -4,12 +4,13 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { auth } from '../utils/firebase';
-import { toggleGpt } from '../utils/GptSlice';
+import { toggleGpt } from '../utils/movieSlice';
 
 const Header = () => {
 
  const navigate = useNavigate();
  const user = useSelector((store)=> store.user);
+ const showGpt = useSelector((store)=> store.movies.showGpt)
  const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -40,7 +41,7 @@ const Header = () => {
 
   const handleGptSearch = ()=>{
     dispatch(toggleGpt());
-  }
+  };
 
   return (
     <div className=' absolute bg-gradient-to-b from-black w-full z-10 flex justify-between'>
@@ -50,7 +51,7 @@ const Header = () => {
       </div>
       {user && (
         <div className='flex m-7 p-2'>
-          <button onClick={handleGptSearch} className='bg-purple-600 rounded-lg ms-2 px-10 text-sm'>Gpt Search</button>
+          <button onClick={handleGptSearch} className='bg-purple-600 rounded-lg ms-2 px-10 text-sm'>{showGpt ? "Home" : "GPT Search"}</button>
         <button onClick={handleSignOut} className='bg-red-600 rounded-lg ms-2 px-4 text-sm'>Sign Out</button>
       </div>
       )}

@@ -7,10 +7,12 @@ import ListContainer from './ListContainer';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTrendingMovies from '../hooks/useTrendingMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import GptRecommended from './GptRecommended';
 
 
 const HomePage = () => {
    
+  const showGpt = useSelector((store)=> store.movies.showGpt)
   useNowPlayingMovies();
   usePopularMovies();
   useTrendingMovies();
@@ -20,10 +22,15 @@ const HomePage = () => {
      
     <div>
       <Header/>
+      {showGpt ? 
+       <GptRecommended/> 
+      :
       <div>
       <FirstContainer/>
       <ListContainer/>
-      </div>
+      </div> }
+      
+      
     </div>
   )
 }

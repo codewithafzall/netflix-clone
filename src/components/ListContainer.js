@@ -9,7 +9,7 @@ const ListContainer = () => {
   return (
     <div className='bg-black'>
     <div className='-mt-56 relative'>
-      <MovieList title={"NowPlaying Movies"} movies={movies.nowPlayingMovies}/>
+      <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
       <MovieList title={"Popular Movies"} movies={movies.popularMovies}/>
       <MovieList title={"Top Rated"} movies={movies.trendingMovies}/>
       <MovieList title={"Upcoming"} movies={movies.upcomingMovies}/>
