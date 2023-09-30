@@ -7,3 +7,5 @@ export const options = {
   };
 
   export const IMG_CDN = "https://image.tmdb.org/t/p/w780/";
+
+  export const openai_key = "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";

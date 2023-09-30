@@ -10,6 +10,8 @@ import { createSlice } from "@reduxjs/toolkit";
         upcomingMovies : null,
         getTrailer : null,
         showGpt : false,
+        movieNames : null ,
+        movieResults : null
        },
        reducers :{
         addNowPlayingMovies:(state ,action)=>{
@@ -29,9 +31,14 @@ import { createSlice } from "@reduxjs/toolkit";
         },
         toggleGpt : (state)=>{
             state.showGpt = !state.showGpt;
+        },
+        gptmovie : (state,action)=>{
+            const { movieNames, movieResults } = action.payload;
+      state.movieNames = movieNames;
+      state.movieResults = movieResults;
         }
        }
  })
  
- export const {addNowPlayingMovies,addTrailer,addPopularMovies,addTrendingMovies,addUpcomingMovies,toggleGpt} = movieSlice.actions;
+ export const {addNowPlayingMovies,addTrailer,addPopularMovies,addTrendingMovies,addUpcomingMovies,toggleGpt,gptmovie} = movieSlice.actions;
  export default movieSlice.reducer;
