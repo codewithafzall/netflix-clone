@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   const search = useRef(null);
   const dispatch = useDispatch();
-  const [loading , setLoading] = useState(true);
+  const [loading , setLoading] = useState(false);
   
 const openai = new OpenAI({
   apiKey: openai_key , 
