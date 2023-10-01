@@ -26,29 +26,31 @@ const getTMDBmovies = async (movie)=>{
   const json = await data.json();
 
   return json.results;
-}
-
-  const handleSearch = async () => {
-
-    setLoading(true);
-    const gptQuery =
-      "Act as a Movie Recommendation system and suggest some movies for the query : " +
-      search.current.value +
-      ". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya"
-
-    const searchResults = await openai.chat.completions.create({
-      messages: [{ role: 'user', content: gptQuery }],
-      model: 'gpt-3.5-turbo',
-    });
-    
-    const gptMovies = searchResults.choices?.[0]?.message?.content.split(",");
-
-    const promiseArray = gptMovies.map(movie => getTMDBmovies(movie));
-    const searchMovies = await Promise.all(promiseArray);
-    setLoading(false);
-    dispatch(gptmovie({ movieNames: gptMovies, movieResults: searchMovies }));
-
-  };
+};
+  
+    const handleSearch = async () => {
+       if(search.current.value === ""){
+        return null;
+       }
+      setLoading(true);
+      const gptQuery =
+        "Act as a Movie Recommendation system and suggest some movies for the query : " +
+        search.current.value +
+        ". only give me names of 10 movies, comma seperated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya"
+  
+      const searchResults = await openai.chat.completions.create({
+        messages: [{ role: 'user', content: gptQuery }],
+        model: 'gpt-3.5-turbo',
+      });
+      
+      const gptMovies = searchResults.choices?.[0]?.message?.content.split(",");
+  
+      const promiseArray = gptMovies.map(movie => getTMDBmovies(movie));
+      const searchMovies = await Promise.all(promiseArray);
+      setLoading(false);
+      dispatch(gptmovie({ movieNames: gptMovies, movieResults: searchMovies }));
+  
+    };
 
   return (
     <div>
