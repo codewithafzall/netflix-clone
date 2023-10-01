@@ -25,7 +25,7 @@ const HomePage = () => {
       {showGpt ? 
        <GptRecommended/> 
       :
-      <div>
+      <div className='bg-black'>
       <FirstContainer/>
       <ListContainer/>
       </div> }

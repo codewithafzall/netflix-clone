@@ -10,7 +10,7 @@ const GptRecommended = () => {
     <div>
       <div className="fixed -z-10">
       <img
-        className="h-screen md:h-full object-cover md:object-none"
+        className="h-screen md:h-full object-cover md:object-none "
         src="https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         alt="bg-image"
       />
@@ -20,12 +20,12 @@ const GptRecommended = () => {
       </div>
       
       {movieNames ? (
-        <div className="mt-56 md:-mt-72 bg-black bg-opacity-70 md:bg-opacity-90">
+        <div className="-mt-[5%] md:-mt-[30%] bg-black bg-opacity-70 md:bg-opacity-40">
         <GptSuggestedMovies />
       </div>
       ) : (
-        <div className="mt-56 md:mt-[40%] bg-black bg-opacity-70 md:bg-opacity-90">
-          {/* <ListContainer /> */}
+        <div className="mt-[31%] md:mt-[22.9%] bg-black bg-opacity-10 md:bg-black md:bg-opacity-10">
+          <ListContainer />
         </div>
       )}
     </div>

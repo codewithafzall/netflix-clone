@@ -3,13 +3,13 @@ import OpenAI from 'openai';
 import { openai_key, options } from "../utils/constant";
 import { useDispatch } from "react-redux";
 import { gptmovie } from "../utils/movieSlice";
-import { ColorRing } from "react-loader-spinner";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const SearchBar = () => {
 
   const search = useRef(null);
   const dispatch = useDispatch();
-  const [loading , setLoading] = useState(false);
+  const [loading , setLoading] = useState(true);
   
 const openai = new OpenAI({
   apiKey: openai_key , 
@@ -55,17 +55,17 @@ const getTMDBmovies = async (movie)=>{
     <div className="flex justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="bg-black w-full md:w-1/2 mt-[10%] p-4 md:p-1 fixed z-40 md:absolute grid grid-cols-12 rounded-md"
+        className="bg-black md:bg-opacity-70 w-full md:w-1/2 mt-[10%] md:mt-[5%] p-4 md:p-1 fixed z-40 md:absolute grid grid-cols-12 rounded-md"
       >
         <input
           ref={search}
           type="text"
-          className="text-xs md:text-lg col-span-8 md:col-span-9 pl-3 my-3 mx-4 rounded-lg"
-          placeholder="funny indian movies!"
+          className="text-xs md:text-lg pl-2 md:p-1 col-span-8 md:col-span-9 md:pl-3 my-3 mx-4 rounded-lg"
+          placeholder="Best of Shahrukh Khan!"
         />
         <button
           onClick={handleSearch}
-          className="bg-red-600 text-xs md:px-7 md:mr-4 mr-0 py-3 rounded-lg col-span-3 my-3"
+          className="bg-red-600 text-xs md:text-lg md:px-7 md:mr-4 mr-0 py-3 rounded-lg col-span-3 my-3"
         >
           Search
         </button>
@@ -73,15 +73,16 @@ const getTMDBmovies = async (movie)=>{
       </div>
 
       {loading && (
-        <div className="flex justify-center pt-[25%]">
-          <ColorRing
+        <div className="flex justify-center pt-[50%] md:pt-[15%] md:pb-56 pb-48">
+          <MagnifyingGlass
             visible={true}
             height="180"
             width="180"
-            ariaLabel="blocks-loading"
+            ariaLabel="MagnifyingGlass-loading"
             wrapperStyle={{}}
-            wrapperClass="blocks-wrapper"
-            colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+            wrapperClass="MagnifyingGlass-wrapper"
+            glassColor = '#c0efff'
+            color = 'red'
           />
         </div>
       )}
