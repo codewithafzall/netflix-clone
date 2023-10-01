@@ -75,12 +75,12 @@ const Login = () => {
       <Header />
       <div>
         <img
-          className="absolute"
+          className="h-[120%] object-cover md:h-auto absolute"
           src="https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           alt="bg-image"
         />
       </div>
-      <form onSubmit={(e)=>e.preventDefault()} className={` w-4/12 absolute p-12 bg-black my-32 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80`}>
+      <form onSubmit={(e)=>e.preventDefault()} className={`w-full md:w-4/12 absolute p-10 md:p-12 bg-black my-32 md:mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80`}>
         
         <h1 className="font-bold text-3xl mb-3">{isSignIn ? "Sign  in" : "Sign Up"}</h1>
 
@@ -101,7 +101,7 @@ const Login = () => {
         
         <button onClick={handleLogin} className="py-3 bg-red-600 w-full rounded-lg mt-4 text-lg">{isSignIn ? "Sign In" : "Sign Up"}</button>
         
-        <p onClick={handleSignIn} className="my-2 cursor-pointer text-sm">{isSignIn ? "New to Netflix? Signup Now" : "Already Registered? SignIn"}</p>
+        <p onClick={handleSignIn} className="my-2 cursor-pointer text-sm text-blue-600">{isSignIn ? "New to Netflix? Signup Now" : "Already Registered? SignIn"}</p>
         
         <p className="text-xs my-4 text-gray-400">This page is protected by Google reCAPTCHA to ensure you're not a bot. <span className="text-blue-700 text-sm">Learn more.</span></p>
 

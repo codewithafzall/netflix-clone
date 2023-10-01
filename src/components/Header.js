@@ -44,15 +44,15 @@ const Header = () => {
   };
 
   return (
-    <div className=' absolute bg-gradient-to-b from-black w-full z-10 flex justify-between'>
+    <div className='bg-black md:bg-gradient-to-b from-black flex flex-col fixed md:absolute  w-full z-10 md:flex-row justify-between'>
       <div>
-        <img className='w-48 m-4' src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png'
+        <img className='w-36 mx-auto m-1 md:w-48 md:mx-0 md:m-4' src='https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png'
          alt='logo'/>
       </div>
       {user && (
-        <div className='flex m-7 p-2'>
-          <button onClick={handleGptSearch} className='bg-purple-600 rounded-lg ms-2 px-10 text-sm'>{showGpt ? "Home" : "GPT Search"}</button>
-        <button onClick={handleSignOut} className='bg-red-600 rounded-lg ms-2 px-4 text-sm'>Sign Out</button>
+        <div className='flex justify-around mb-2 md:m-7 p-2'>
+          <button onClick={handleGptSearch} className='bg-purple-600 rounded-lg md:ms-2 w-28 md:w-40 text-sm h-10'>{showGpt ? "Home" : "GPT Search"}</button>
+        <button onClick={handleSignOut} className='bg-yellow-300 md:bg-red-600 rounded-lg md:ms-2 w-28 md:w-36 text-sm'>Sign Out</button>
       </div>
       )}
       

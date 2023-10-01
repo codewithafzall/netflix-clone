@@ -7,8 +7,8 @@ const ListContainer = () => {
   const movies = useSelector((store)=> store.movies);
 
   return (
-    <div className='bg-black'>
-    <div className='-mt-56 relative'>
+    <div className='bg-black md:bg-black md:bg-opacity-90'>
+    <div className='-mt-0 pb-12 md:-mt-48 relative'>
       <MovieList title={"Now Playing"} movies={movies.nowPlayingMovies}/>
       <MovieList title={"Popular Movies"} movies={movies.popularMovies}/>
       <MovieList title={"Top Rated"} movies={movies.trendingMovies}/>
@@ -18,4 +18,4 @@ const ListContainer = () => {
   )
 }
 
-export default ListContainer
+export default ListContainer;
