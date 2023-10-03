@@ -20,7 +20,7 @@ const GptRecommended = () => {
       </div>
       
       {movieNames ? (
-        <div className="-mt-[17%] md:-mt-[30%] bg-black bg-opacity-70 md:bg-opacity-40">
+        <div className="-mt-[18%] md:-mt-[30%] bg-black bg-opacity-70 md:bg-opacity-40">
         <GptSuggestedMovies />
       </div>
       ) : (
