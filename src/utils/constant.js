@@ -8,4 +8,4 @@ export const options = {
 
   export const IMG_CDN = "https://image.tmdb.org/t/p/w780/";
 
-  export const openai_key = process.env.REACT_APP_OPENAI_KEY;
+  export const openai_key = "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";
