@@ -57,7 +57,7 @@ const getTMDBmovies = async (movie)=>{
     <div className="flex justify-center">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="bg-black md:bg-opacity-70 w-full md:w-1/2 mt-[10%] md:mt-[5%] p-4 md:p-1 fixed z-40 md:absolute grid grid-cols-12 rounded-md"
+        className="bg-black md:bg-opacity-70 w-full md:w-1/2 -mt-[2%] md:mt-[5%] p-4 md:p-1 fixed z-40 md:absolute grid grid-cols-12 rounded-md"
       >
         <input
           ref={search}

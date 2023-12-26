@@ -20,11 +20,11 @@ const GptRecommended = () => {
       </div>
       
       {movieNames ? (
-        <div className="-mt-[5%] md:-mt-[30%] bg-black bg-opacity-70 md:bg-opacity-40">
+        <div className="-mt-[18%] md:-mt-[30%] bg-black bg-opacity-70 md:bg-opacity-40">
         <GptSuggestedMovies />
       </div>
       ) : (
-        <div className="mt-[31%] md:mt-[22.9%] bg-black bg-opacity-10 md:bg-black md:bg-opacity-10">
+        <div className="mt-[23%] md:mt-[22.9%] bg-black bg-opacity-10 md:bg-black md:bg-opacity-10">
           <ListContainer />
         </div>
       )}
