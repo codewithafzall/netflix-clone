@@ -52,7 +52,7 @@ const Header = () => {
       </div>
       {user && (
         <div className='flex justify-around mb-2 md:m-7 p-2'>
-          <button onClick={handleGptSearch} className='outline-2 outline outline-red-600 mr-2 text-white rounded-lg md:mr-2 w-24 text-xs md:w-40 h-10'>{showGpt ? "Home" : "GPT Search"}</button>
+          <button onClick={handleGptSearch} className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2 md:mr-2 w-24 text-xs md:w-40 h-10'>{showGpt ? "Home" : "GPT Search"}</button>
         <button onClick={handleSignOut} className='rounded-full md:ml-2 w-10 md:w-10 text-sm'><img className='rounded-full' alt='signout-logo' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6H9CXr6dDkFXNxOI0BTfkG4nD_BblFce7J1rj4tCmbNwh1XPtORwMmCKSS3NCZZ_k7I0&usqp=CAU" /></button>
       </div>
       )}
